@@ -1,11 +1,15 @@
 import React from 'react'
 
-const BookList = ({ item }) => {
-  console.log('in book list', item)
+const BookList = ({ item, addItemToCart }) => {
+  // console.log('in book list', item)
   // let itemPrice = item.product.priceInCents + ''
   // let price = `$ ${itemPrice.substring(0, itemPrice.length - 2)}.${itemPrice.substring(itemPrice.length - 2)}`
   const titleStyle = {
     fontSize: '17px'
+  }
+
+  addItemToCart = function(ev) {
+    console.log('book list item to cart f(x)', ev.target.id)
   }
 
   const date = item.published.split('T')[0]
@@ -29,7 +33,7 @@ const BookList = ({ item }) => {
         <br />
         <div className="price">${item.price}.00</div>
         <br />
-        <button onClick="addItem">Add to Cart</button>
+        <button onClick={addItemToCart} id={item.id}>Add to Cart</button>
         <hr />
         <br />
       </div>

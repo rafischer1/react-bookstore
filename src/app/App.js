@@ -11,14 +11,17 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.apibase = 'http://localhost:8082/api'
-    this.state = { books: [] }
+    this.state = { 
+      books: [],
+      cart: []
+     }
   }
 
   async componentDidMount() {
     const response = await fetch(`${this.apibase}/books`)
     if (response.status === 200) {
       let resJson = await response.json()
-      console.log('resJson', resJson)
+      // console.log('resJson', resJson)
       this.setState({
         ...this.state,
         books: resJson
@@ -28,12 +31,16 @@ export default class App extends Component {
     }
   }
 
+  addItemToCart() {
+    console.log('item to cart function')
+  }
+
   render() {
     return (
       <main className="App">
       <SearchBar />
       <hr />
-        <BookItemsList items={this.state.books} />
+        <BookItemsList items={this.state.books} addItemToCart={this.addItemToCart} />
         <div className="shoppingCart">
         {/* Shopping cart goes here */}
         <Total items={this.state.books} />
