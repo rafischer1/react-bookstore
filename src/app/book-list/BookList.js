@@ -9,7 +9,8 @@ const BookList = ({ item, addItemToCart }) => {
   }
 
   addItemToCart = function(ev) {
-    console.log('book list item to cart f(x)', ev.target.id)
+    console.log('book list item to cart f(x)', item)
+    return item 
   }
 
   const date = item.published.split('T')[0]

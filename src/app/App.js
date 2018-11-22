@@ -25,11 +25,12 @@ export default class App extends Component {
       })
     } else {
       console.log('I broke on the GET fetch', response)
+      throw new Error('Uh oh! I broke on the GET request')
     }
   }
 
   addItemToCart(book) {
-    console.log('item to app.js cart function')
+    console.log('item to app.js cart function:', book)
   }
 
   render() {
