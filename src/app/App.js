@@ -1,28 +1,51 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+// import CardList from '../components/CardList'
+// import CardData from '../components/CardData.json'
+// import AddCardForm from '../components/AddCardForm'
+import BookItemsList from './book-list/BookItemsList'
+import Total from './total/Total'
+import SearchBar from './search-bar/SearchBar'
 
-class App extends Component {
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.apibase = 'http://localhost:8082/api'
+    this.state = { books: [] }
+  }
+
+  async componentDidMount() {
+    const response = await fetch(`${this.apibase}/books`)
+    if (response.status === 200) {
+      let resJson = await response.json()
+      console.log('resJson', resJson)
+      this.setState({
+        ...this.state,
+        books: resJson
+      })
+    } else {
+      console.log('I broke on the GET fetch', response)
+    }
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <main className="App">
+      <SearchBar />
+      <hr />
+        <span>Books:</span>
+        <BookItemsList items={this.state.books} />
+        <div className="shoppingCart">
+        {/* Shopping cart goes here */}
+        <Total items={this.state.books} />
+        <button>Checkout Now</button>
+        </div>
+      </main>
+    )
   }
 }
 
-export default App;
+{/* <div className="main">
+          <CardList title="To Do" card={CardData} />
+          <AddCardForm />
+        </div> */}

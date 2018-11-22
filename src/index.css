@@ -12,3 +12,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+div.booksList {
+  font-size: 14px;
+}
+
+div.price {
+  border: 1px solid black;
+  margin-top: 5px;
+  text-align: center;
+  width: 10%;
+}
+
+div.shoppingCart {
+  padding: 5px;
+  margin-top: 2%;
+  width: 50%;
+  border: 1px solid rgb(156, 55, 55);
+}
