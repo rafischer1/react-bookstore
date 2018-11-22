@@ -6,6 +6,31 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(245, 245, 245);
+}
+
+hr {
+  width: 90%;
+  background-color: darkolivegreen;
+  height: 1.5px;
+}
+
+button {
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+button:active {
+  background-color: #000000;
+  color: whitesmoke;
+}
+
+form {
+  border-top: 1px solid black;
+  margin-top: 10px;
+  padding: 10px;
+
 }
 
 code {
@@ -29,4 +54,8 @@ div.shoppingCart {
   margin-top: 2%;
   width: 50%;
   border: 1px solid rgb(156, 55, 55);
+}
+
+div.active {
+  font-size: 24px;
 }

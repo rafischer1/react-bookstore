@@ -4,22 +4,29 @@ const BookList = ({ item }) => {
   console.log('in book list', item)
   // let itemPrice = item.product.priceInCents + ''
   // let price = `$ ${itemPrice.substring(0, itemPrice.length - 2)}.${itemPrice.substring(itemPrice.length - 2)}`
+  const titleStyle = {
+    fontSize: '17px'
+  }
+
+  const date = item.published.split('T')[0]
+  const published = `${date.split('-')[1]}/${date.split('-')[2]}/${date.split('-')[0]}`
+
   return (
     <div>
       <div className="booksList">
-        <div>Title: {item.title}</div>
+        <div style={titleStyle}><b>Title:</b> <i>{item.title}</i></div>
+        <div><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.subtitle}</i></div>
         <br />
-        <div>Subtitle: {item.subtitle}</div>
+        <div><b>Author:</b> {item.author}</div>
         <br />
-        <div>Author: {item.author}</div>
+        <div><b>Page #:</b> {item.pages}</div>
         <br />
-        <div>Page #:{item.pages}</div>
+        <div><b>Publisher:</b>{item.publisher}</div>
         <br />
-        <div>Publisher:{item.publisher}</div>
-        <br />
-        <div>Published: {item.published}</div>
+        <div><b>Published:</b> {published}</div>
         <br />
         <a href={item.website} target="_blank" >{item.website}</a>
+        <br />
         <div className="price">${item.price}.00</div>
         <br />
         <button onClick="addItem">Add to Cart</button>

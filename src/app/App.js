@@ -33,7 +33,6 @@ export default class App extends Component {
       <main className="App">
       <SearchBar />
       <hr />
-        <span>Books:</span>
         <BookItemsList items={this.state.books} />
         <div className="shoppingCart">
         {/* Shopping cart goes here */}
