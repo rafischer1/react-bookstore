@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-// import CardList from '../components/CardList'
-// import CardData from '../components/CardData.json'
-// import AddCardForm from '../components/AddCardForm'
 import BookItemsList from './book-list/BookItemsList'
 import Total from './total/Total'
 import SearchBar from './search-bar/SearchBar'
@@ -31,8 +28,8 @@ export default class App extends Component {
     }
   }
 
-  addItemToCart() {
-    console.log('item to cart function')
+  addItemToCart(book) {
+    console.log('item to app.js cart function')
   }
 
   render() {
@@ -50,8 +47,3 @@ export default class App extends Component {
     )
   }
 }
-
-{/* <div className="main">
-          <CardList title="To Do" card={CardData} />
-          <AddCardForm />
-        </div> */}
