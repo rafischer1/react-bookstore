@@ -4,10 +4,12 @@ export default class SearchBar extends React.Component {
   constructor(props) {
     super(props)
     var updatedList = this.props
+    
     console.log(updatedList)
   }
   
   render() {
+    let searchResult
     const filterFunc = (ev) => {
       ev.preventDefault()
       // console.log("Author:", ev.target[0].checked, "Title:", ev.target[1].checked, ev.target[2].value, this.props)
@@ -15,21 +17,30 @@ export default class SearchBar extends React.Component {
       let author = ev.target[0].checked
       let title = ev.target[1].checked
       let books = this.props.books
+      
       // if statement to determine input type
       if (author === true && title === true) {
         alert("Please select 'Author' OR 'Title'")
       } else if (author === true && title === false) {
         console.log("Author search", input)
         // find just the books authors
-       console.log(books)
        books.forEach((book) => {
-         console.log(book.author.toLowerCase(), input.toLowerCase())
-         // search through them for a match (go to lowercase?)
+         console.log(book.author.toLowerCase().indexOf(input.toLowerCase()) >=0 )
+         if (book.author.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
+           
+           searchResult = book
+           console.log("search result:", searchResult.title)
+           return searchResult
+         } 
        })
       } else if (title === true && author === false) {
         console.log("Title search time")
         books.forEach((book) => {
-          console.log(book.title.toLowerCase(), input.toLowerCase())
+          if (book.title.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
+            console.log("search result:", book)
+            searchResult = book
+            return searchResult
+          } 
         })
       } else {
         alert("Please select a search option: 'Author' or 'Title'")
@@ -39,7 +50,6 @@ export default class SearchBar extends React.Component {
     return (
       <div className="topnav">
         <a className="active" href="/">RAF API BookStore</a>
-        {/* <form onSubmit={onSubmit}> */}
         <form onSubmit={filterFunc}>
           <div>
             <input type="checkbox" id="author" name="Author" value="Author" defaultChecked />
@@ -53,7 +63,11 @@ export default class SearchBar extends React.Component {
           <input type="text" placeholder="Search.." />
           <input type="submit" placeholder="Submit"  />
         </form>
+        <div className="searchResult">
+          {searchResult}
+        </div>
       </div>
+     
     )
   }
 }
