@@ -10,17 +10,27 @@ export default class SearchBar extends React.Component {
   render() {
     const filterFunc = (ev) => {
       ev.preventDefault()
-      console.log("Author:", ev.target[0].checked, "Title:", ev.target[1].checked, ev.target[2].value, this.props)
+      // console.log("Author:", ev.target[0].checked, "Title:", ev.target[1].checked, ev.target[2].value, this.props)
       let input = ev.target[2].value
       let author = ev.target[0].checked
       let title = ev.target[1].checked
-      let books = this.props
+      let books = this.props.books
+      // if statement to determine input type
       if (author === true && title === true) {
         alert("Please select 'Author' OR 'Title'")
       } else if (author === true && title === false) {
-        console.log("Author search")
+        console.log("Author search", input)
+        // find just the books authors
+       console.log(books)
+       books.forEach((book) => {
+         console.log(book.author.toLowerCase(), input.toLowerCase())
+         // search through them for a match (go to lowercase?)
+       })
       } else if (title === true && author === false) {
         console.log("Title search time")
+        books.forEach((book) => {
+          console.log(book.title.toLowerCase(), input.toLowerCase())
+        })
       } else {
         alert("Please select a search option: 'Author' or 'Title'")
       }
