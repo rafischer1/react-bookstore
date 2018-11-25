@@ -36,7 +36,9 @@ export default class App extends Component {
   render() {
     return (
       <main className="App">
-      <SearchBar />
+          <SearchBar books={this.state.books}/>
+   
+      
       <hr />
         <BookItemsList items={this.state.books} addItemToCart={this.addItemToCart} />
         <div className="shoppingCart">
@@ -48,3 +50,7 @@ export default class App extends Component {
     )
   }
 }
+
+
+
+

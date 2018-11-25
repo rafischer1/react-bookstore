@@ -29,6 +29,7 @@ Customer:
  As a customer, when I arrive to the home page, I see a list of all of the books, a search bar on top, and a checkout/cart area to the right.
 
  __Filter__: As a customer, I am able to filter the list of books by title or author.
+ [Filter CodePen](https://codepen.io/mtclmn/pen/QyPVJp)
 
  __AddToCart__: As a customer, I am able to add a book to the cart by clicking the "Add to cart" button.
 
