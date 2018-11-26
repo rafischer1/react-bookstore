@@ -21,12 +21,12 @@ export default class SearchBar extends React.Component {
     if (author === true && title === true) {
       alert("Please select 'Author' OR 'Title'")
     } else if (author === true && title === false) {
-      console.log("Author search", input)
+      // console.log("Author search", input)
       // find just the books authors
       books.forEach((result) => {
         console.log(result.author.toLowerCase().indexOf(input.toLowerCase()) >= 0)
         if (result.author.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
-          console.log("author return:", result)
+          // console.log("author return:", result)
           results.push(result)
           this.setState({
             ...this.state,
@@ -41,10 +41,10 @@ export default class SearchBar extends React.Component {
         }
       })
     } else if (title === true && author === false) {
-      console.log("Title search time")
+      // console.log("Title search time")
       books.forEach((result) => {
         if (result.title.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
-          console.log("title result:", result)
+          // console.log("title result:", result)
           results.push(result)
           this.setState({
             ...this.state,

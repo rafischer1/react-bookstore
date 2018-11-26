@@ -57,3 +57,9 @@ div.shoppingCart {
 div.active {
   font-size: 24px;
 }
+
+div.searchResults {
+  font-size: 20px;
+  color: rgb(42, 47, 42);
+  margin-left: 10px;
+}

@@ -1,16 +1,22 @@
 import React from 'react'
+import Cart from '../cart/Cart'
 
 const BookList = ({ item, addItemToCart }) => {
   // console.log('in book list', item)
   // let itemPrice = item.product.priceInCents + ''
   // let price = `$ ${itemPrice.substring(0, itemPrice.length - 2)}.${itemPrice.substring(itemPrice.length - 2)}`
+
+  const cartItem = []
   const titleStyle = {
     fontSize: '17px'
   }
 
-  addItemToCart = function(ev) {
+  addItemToCart = (ev) => {
     console.log('book list item to cart f(x):', item)
-    return item 
+    cartItem.push(item)
+    return <div>
+    <Cart item={cartItem} />
+    </div>
   }
 
   const date = item.published.split('T')[0]
