@@ -2,6 +2,12 @@ import React from 'react'
 import SearchResultList from './SearchResultsList'
 
 export default class SearchBar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      _book: []
+    }
+  }
 
   filterFunc = (ev) => {
     ev.preventDefault()
@@ -9,6 +15,7 @@ export default class SearchBar extends React.Component {
     let author = ev.target[0].checked
     let title = ev.target[1].checked
     let books = this.props.books
+    let results = []
 
     // if statement to determine input type
     if (author === true && title === true) {
@@ -16,19 +23,33 @@ export default class SearchBar extends React.Component {
     } else if (author === true && title === false) {
       console.log("Author search", input)
       // find just the books authors
-      books.forEach((book) => {
-        console.log(book.author.toLowerCase().indexOf(input.toLowerCase()) >= 0)
-        if (book.author.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
-          console.log("author return:", book)
-          return book
+      books.forEach((result) => {
+        console.log(result.author.toLowerCase().indexOf(input.toLowerCase()) >= 0)
+        if (result.author.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
+          console.log("author return:", result)
+          results.push(result)
+          this.setState({
+            ...this.state,
+            _book: results,
+            get book() {
+              return this._book;
+            },
+            set book(value) {
+              this._book = value;
+            },
+          })
         }
       })
     } else if (title === true && author === false) {
       console.log("Title search time")
-      books.forEach((book) => {
-        if (book.title.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
-          console.log("title result:", book)
-          return book
+      books.forEach((result) => {
+        if (result.title.toLowerCase().indexOf(input.toLowerCase()) >= 0) {
+          console.log("title result:", result)
+          results.push(result)
+          this.setState({
+            ...this.state,
+            book: results
+          })
         }
       })
     } else {
@@ -53,7 +74,7 @@ export default class SearchBar extends React.Component {
           <input type="text" placeholder="Search.." />
           <input type="submit" placeholder="Submit"  />
         </form>
-        <SearchResultList results={this.book}/>
+        <SearchResultList book={this.state.book}/>
       </div>
      
     )

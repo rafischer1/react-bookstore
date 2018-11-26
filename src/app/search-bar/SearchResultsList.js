@@ -1,16 +1,27 @@
 import React from 'react'
 
-const SearchResultsList = ({results}) => {
-  console.log("search result list:", results)
-  if (results === undefined) {
-    console.log("search results are undefined")
+const SearchResultsList = ({book}) => {
+  const addItemToCart = (ev) => {
+    console.log(ev.target)
   }
-  
+  console.log("search result list:", book)
+  if (book === undefined) {
+    console.log("search results are undefined")
+    return false
+  } 
   return (
-    <div>
-    Search Results! {results}
-    </div>
+    book.map((item) => {
+      return (
+        <div>
+          {item.title}<br />
+          {item.author}<br />
+          ${item.price}<br />
+          <button type="submit" onClick={addItemToCart}>Add To Cart</button>
+        </div>
+      )
+    })
   )
+   
 }
 
 export default SearchResultsList

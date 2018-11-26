@@ -42,10 +42,8 @@ export default class App extends Component {
     return (
       <main className="App">
           <SearchBar books={this.state.books}/>
-   
-      
       <hr />
-        <BookItemsList items={this.state.books} addItemToCart={this.addItemToCart} />
+        <BookItemsList items={this.state.books} addItemToCart={this.addItemToCart} />       
         <div className="shoppingCart">
         {/* Shopping cart goes here */}
         <Total items={this.state.books} />
