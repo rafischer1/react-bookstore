@@ -1,12 +1,18 @@
 import React from 'react'
-import CartItems from '../cart/CartItems'
+import Cart from '../cart/Cart'
 
-const SearchResultsList = ({book}) => {
-  let cartItems = []
+const SearchResultsList = ({ book, addToCartCallback}) => {
+ 
+  // const addItemToCart = (ev) => {
+  //   console.log('new cart item from search:', ev.target.value)
+  //   let item = ev.target.value
+  //   return <Cart item={item} />
+   
+  // }
   const addItemToCart = (ev) => {
-    cartItems.push(ev.target.value)
-    console.log(cartItems)
-    return <CartItems items={CartItems} />
+    let values = []
+    values.push(ev.target.value)
+    addToCartCallback(values)
   }
   // console.log("search result list:", book)
   if (book === undefined) {
@@ -16,11 +22,11 @@ const SearchResultsList = ({book}) => {
   return (
     book.map((item, idx) => {
       return (
-        <div className="searchResults">
+        <div className="searchResults" idx={idx}>
           <i>{item.title}</i><br />
           By: {item.author}<br />
           ${item.price}<br />
-          <button type="submit" value={[item.title, item.price]} onClick={addItemToCart}>Add To Cart</button>
+          <button type="submit" value={item.title} onClick={addItemToCart}>Add To Cart</button>
         </div>
       )
     })

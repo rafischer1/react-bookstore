@@ -1,22 +1,18 @@
 import React from 'react'
 import Total from '../total/Total'
 
-export default class Cart extends React.Component {
-  constructor(props) {
-    super(props) 
-    this.state = {
-      cart: []
-    }
-  }
+const Cart = ({item}) => {
+  console.log("in Cart:", item)
 
-render() {
   return (<div>
-           {/* <span>{item.title}</span>
-           <span>${item.price}:00</span> */}
-         
-           <Total items={this.state.cart} />
-           <button>Checkout Now</button>
-        </div>
-   )
-  }
+    {/* <span>{this.state.item.title}</span>
+           <span>${this.state.item.price}:00</span> */}
+    <div>{item}</div>
+    <button>Remove</button>
+ 
+    <button>Checkout Now</button>
+  </div>
+  )
 }
+
+export default Cart

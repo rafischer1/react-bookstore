@@ -74,7 +74,7 @@ export default class SearchBar extends React.Component {
           <input type="text" placeholder="Search.." />
           <input type="submit" placeholder="Submit"  />
         </form>
-        <SearchResultList book={this.state.book}/>
+        <SearchResultList book={this.state.book} addToCartCallback={this.props.addToCartCallback}/>
       </div>
      
     )

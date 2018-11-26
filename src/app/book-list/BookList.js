@@ -1,23 +1,18 @@
 import React from 'react'
-import Cart from '../cart/Cart'
 
-const BookList = ({ item, addItemToCart }) => {
-  // console.log('in book list', item)
-  // let itemPrice = item.product.priceInCents + ''
-  // let price = `$ ${itemPrice.substring(0, itemPrice.length - 2)}.${itemPrice.substring(itemPrice.length - 2)}`
 
-  const cartItem = []
+const BookList = ({ item, addToCartCallback }) => {
   const titleStyle = {
     fontSize: '17px'
   }
 
-  addItemToCart = (ev) => {
-    console.log('book list item to cart f(x):', item)
-    cartItem.push(item)
-    return <div>
-    <Cart item={cartItem} />
-    </div>
+  const addItemToCart = (ev) => {
+    let values
+    values = ev.target.value
+    addToCartCallback(values)
   }
+  
+  
 
   const date = item.published.split('T')[0]
   const published = `${date.split('-')[1]}/${date.split('-')[2]}/${date.split('-')[0]}`
@@ -40,7 +35,7 @@ const BookList = ({ item, addItemToCart }) => {
         <br />
         <div className="price">${item.price}.00</div>
         <br />
-        <button onClick={addItemToCart} id={item.id}>Add to Cart</button>
+        <button onClick={addItemToCart} value={item.title} id={item.id}>Add to Cart</button>
         <hr />
         <br />
       </div>
