@@ -7,8 +7,8 @@ const BookList = ({ item, addToCartCallback }) => {
   }
 
   const addItemToCart = (ev) => {
-    let values
-    values = ev.target.value
+    let values = []
+    values.push(ev.target.value)
     addToCartCallback(values)
   }
   

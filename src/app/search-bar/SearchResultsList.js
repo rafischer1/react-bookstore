@@ -1,5 +1,4 @@
 import React from 'react'
-import Cart from '../cart/Cart'
 
 const SearchResultsList = ({ book, addToCartCallback}) => {
  

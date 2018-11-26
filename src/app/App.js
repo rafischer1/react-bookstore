@@ -16,12 +16,11 @@ export default class App extends Component {
   }
 
   addToCartCallback = (value) => {
-    let values = []
-    values.push(value)
-    console.log("app.js value for cart:", values)
+    
+    console.log("app.js value for cart:", value)
     return this.setState({
            ...this.state,
-            cart: values 
+           cart: this.state.cart.concat(value)
     })
   }
 
@@ -44,8 +43,8 @@ export default class App extends Component {
     return (
       <main className="App">
         <SearchBar books={this.state.books} addToCartCallback={this.addToCartCallback}/>
-      <hr />
-        <BookItemsList items={this.state.books} addToCartCallback={this.addToCartCallback} />       
+        <hr />
+        <BookItemsList items={this.state.books} addToCartCallback={this.addToCartCallback} /> 
         <div className="shoppingCart">
           <Cart item={this.state.cart} />
           <Total item={this.state.cart} />

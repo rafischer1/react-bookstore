@@ -63,3 +63,9 @@ div.searchResults {
   color: rgb(42, 47, 42);
   margin-left: 10px;
 }
+
+button {
+  background-color: rgb(156, 55, 55);
+  color: white;
+}
+
