@@ -9,7 +9,7 @@ const BookList = ({ item, addItemToCart }) => {
   }
 
   addItemToCart = function(ev) {
-    console.log('book list item to cart f(x)', item)
+    console.log('book list item to cart f(x):', item)
     return item 
   }
 

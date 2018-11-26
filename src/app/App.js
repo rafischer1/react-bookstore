@@ -31,6 +31,11 @@ export default class App extends Component {
 
   addItemToCart(book) {
     console.log('item to app.js cart function:', book)
+    this.cart.push(book)
+    this.setState({
+      ...this.state,
+      cart: this.cart
+    })
   }
 
   render() {
