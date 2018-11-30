@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import BookItemsList from './book-list/BookItemsList'
+import BookItemListContainer from './redux/containers/BookItemListContainer'
+// import BookListContainer from './redux/containers/BookItemsContainer'
 import Cart from './cart/Cart'
 import SearchBar from './search-bar/SearchBar'
 import Total from './total/Total'
@@ -8,7 +9,6 @@ import Total from './total/Total'
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.apibase = 'http://localhost:8082/api'
     this.state = { 
       books: [],
       cart: []
@@ -16,7 +16,6 @@ export default class App extends Component {
   }
 
   addToCartCallback = (value) => {
-    
     console.log("app.js value for cart:", value)
     return this.setState({
            ...this.state,
@@ -25,7 +24,11 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch(`${this.apibase}/books`)
+    const response = await fetch(`http://localhost:8082/api/books`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     if (response.status === 200) {
       let resJson = await response.json()
       // console.log('resJson', resJson)
@@ -44,7 +47,7 @@ export default class App extends Component {
       <main className="App">
         <SearchBar books={this.state.books} addToCartCallback={this.addToCartCallback}/>
         <hr />
-        <BookItemsList items={this.state.books} addToCartCallback={this.addToCartCallback} /> 
+        <BookItemListContainer items={this.state.books} addToCartCallback={this.addToCartCallback} /> 
         <div className="shoppingCart">
           <Cart item={this.state.cart} />
           <Total item={this.state.cart} />

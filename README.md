@@ -34,3 +34,7 @@ Customer:
  __AddToCart__: As a customer, I am able to add a book to the cart by clicking the "Add to cart" button.
 
  __TotalPrice__: As a customer, when I add a book to the cart, I should see the total dollar amount be updated to reflect all of the books in the cart
+
+
+
+

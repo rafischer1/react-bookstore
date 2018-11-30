@@ -5,7 +5,6 @@ export default class Total extends React.Component {
      if (this.props.item === undefined) {
        return false
      }
-    console.log(this.props.item.length)
      let price = parseInt(this.props.item.length) * 5
     return (
       <div>Total Price = ${price}.00

@@ -13,7 +13,6 @@ const BookList = ({ item, addToCartCallback }) => {
   }
   
   
-
   const date = item.published.split('T')[0]
   const published = `${date.split('-')[1]}/${date.split('-')[2]}/${date.split('-')[0]}`
 

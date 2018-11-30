@@ -1,13 +1,6 @@
 import React from 'react'
 
 const SearchResultsList = ({ book, addToCartCallback}) => {
- 
-  // const addItemToCart = (ev) => {
-  //   console.log('new cart item from search:', ev.target.value)
-  //   let item = ev.target.value
-  //   return <Cart item={item} />
-   
-  // }
   const addItemToCart = (ev) => {
     let values = []
     values.push(ev.target.value)
